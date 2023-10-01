@@ -338,11 +338,11 @@ def toot(post, replyTo, images, doPost):
     if replyTo and mediaIds:
         a = mastodon.status_post(post, in_reply_to_id=replyTo, media_ids=mediaIds)
     elif replyTo:
-        a = mastodon.status_post(post, in_reply_to_id=replyTo, visibility="unlisted")
+        a = mastodon.status_post(post, in_reply_to_id=replyTo, visibility="public")
     elif mediaIds:
-        a = mastodon.status_post(post, media_ids=mediaIds, visibility="unlisted")
+        a = mastodon.status_post(post, media_ids=mediaIds, visibility="public")
     else:
-        a = mastodon.status_post(post, visibility="unlisted")
+        a = mastodon.status_post(post, visibility="public")
     writeLog("Posted to mastodon")
     id = a["id"]
     return id
